@@ -1,16 +1,16 @@
 import { useState } from "react";
+import Result from "./components/Result";
 
 function App() {
     const [country, setCountry] = useState("");
-    // const [result, setResult] = useState("");
+    const [result, setResult] = useState("");
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // const data = country;
-        // setResult(data);
-        // console.log(result);
+        const data = country;
+        setResult(data);
     };
     return (
-        <div className="w-screen h-screen bg-gray-600">
+        <div className="w-screen h-screen bg-gray-600 overflow-y-scroll">
             <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl p-4">
                 GDSC Frontend Task 1
             </h1>
@@ -33,6 +33,7 @@ function App() {
                     </button>
                 </div>
             </form>
+            {result == "" ? null : <Result search={result} />}
         </div>
     );
 }
