@@ -3,6 +3,7 @@ import Result from "./components/Result";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { Tab } from "@mui/material";
 import Reverse from "./components/Reverse";
+import { FaLastfm } from "react-icons/fa";
 
 function App() {
     const [country, setCountry] = useState("");
@@ -28,6 +29,7 @@ function App() {
     return (
         <div className="w-screen h-screen overflow-y-scroll">
             <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl p-4 font-bold">
+                <FaLastfm />
                 GDSC Frontend Task 1
             </h1>
             <div>
@@ -60,7 +62,7 @@ function App() {
                             <div className="flex justify-center m-4">
                                 <select
                                     value={number}
-                                    className=" w-1/6 p-4 rounded-2xl bg-gray-100"
+                                    className=" w-1/4 md:w-1/6 lg:w-1/12 p-4 rounded-2xl bg-gray-100"
                                     onChange={(e) =>
                                         setNumber(Number(e.target.value))
                                     }
@@ -77,7 +79,7 @@ function App() {
                                     className="w-1/4  p-4 rounded-3xl bg-[#000031] text-white"
                                     type="submit"
                                 >
-                                    Submit
+                                    Search
                                 </button>
                             </div>
                         </form>
@@ -99,7 +101,7 @@ function App() {
                             <div className="flex justify-center m-4">
                                 <select
                                     value={number}
-                                    className=" w-1/6 p-4 rounded-2xl bg-gray-100"
+                                    className=" w-1/4 md:w-1/6 lg:w-1/12 p-4 rounded-2xl bg-gray-100"
                                     onChange={(e) =>
                                         setNumber(Number(e.target.value))
                                     }
@@ -116,7 +118,7 @@ function App() {
                                     className="w-1/4  p-4 rounded-3xl bg-[#000031] text-white"
                                     type="submit"
                                 >
-                                    Submit
+                                    Search
                                 </button>
                             </div>
                         </form>
