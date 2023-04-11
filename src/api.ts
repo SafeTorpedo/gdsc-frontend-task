@@ -32,4 +32,13 @@ const getData = async (search: string) => {
     };
 };
 
-export { searchImages, getData };
+const getTracks = async (search: string) => {
+    const tracks = await axios.get(
+        `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${search}&api_key=${
+            import.meta.env.VITE_API_KEY
+        }&format=json&limit=5`
+    );
+    return tracks.data.toptracks.track;
+};
+
+export { searchImages, getData, getTracks };

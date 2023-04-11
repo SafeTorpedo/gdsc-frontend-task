@@ -1,7 +1,15 @@
 import { memo, useEffect, useState } from "react";
 import { searchImages } from "../api";
 
-const Card = ({ name, listeners }: { name: string; listeners: string }) => {
+const Card = ({
+    name,
+    listeners,
+    link,
+}: {
+    name: string;
+    listeners: string;
+    link?: string;
+}) => {
     const [image, setImage] = useState("");
 
     useEffect(() => {
@@ -24,6 +32,18 @@ const Card = ({ name, listeners }: { name: string; listeners: string }) => {
                 <h1 className="text-center text-sm sm:text-md md:text-lg lg:text-xl p-1">
                     Listeners: {listeners}
                 </h1>
+            </div>
+            <div className="flex justify-center">
+                {link ? (
+                    <a
+                        href={link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-center text-sm sm:text-md md:text-lg lg:text-xl p-1"
+                    >
+                        Play
+                    </a>
+                ) : null}
             </div>
         </div>
     );

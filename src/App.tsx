@@ -2,6 +2,7 @@ import { useState } from "react";
 import Result from "./components/Result";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { Tab } from "@mui/material";
+import Reverse from "./components/Reverse";
 
 function App() {
     const [country, setCountry] = useState("");
@@ -27,9 +28,13 @@ function App() {
                 <TabContext value={value}>
                     <TabList
                         className="flex justify-center p-10 "
-                        onChange={(e: React.SyntheticEvent, newValue: string) =>
-                            setValue(newValue)
-                        }
+                        onChange={(
+                            e: React.SyntheticEvent,
+                            newValue: string
+                        ) => {
+                            setValue(newValue);
+                            setResult("");
+                        }}
                     >
                         <Tab label="Country Search" value="1" />
                         <Tab label="Artist Search" value="2" />
