@@ -25,7 +25,7 @@ const getData = async (search: string) => {
             limit: 5,
         },
     });
-    const tracks = await axios.get("http://ws.audioscrobbler.com/2.0/", {
+    const tracks = await axios.get("https://ws.audioscrobbler.com/2.0/", {
         params: {
             method: "geo.gettoptracks",
             country: search,
