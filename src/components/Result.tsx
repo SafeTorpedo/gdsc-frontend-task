@@ -13,6 +13,7 @@ const Result = ({ search, max }: ResultProps) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        setIsLoading(true);
         getData(search, max).then((res) => {
             setArtists(res.artists);
             setTracks(res.tracks);

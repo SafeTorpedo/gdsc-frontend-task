@@ -11,6 +11,7 @@ const Reverse = ({ search, max }: ReverseProps) => {
     const [tracks, setTracks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
+        setIsLoading(true);
         getTracks(search, max).then((res) => {
             setTracks(res);
             setIsLoading(false);

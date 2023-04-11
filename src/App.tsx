@@ -4,6 +4,7 @@ import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { Tab } from "@mui/material";
 import Reverse from "./components/Reverse";
 import { FaLastfm } from "react-icons/fa";
+import MapInput from "./components/MapInput";
 
 function App() {
     const [country, setCountry] = useState("");
@@ -26,6 +27,11 @@ function App() {
         const dataNumber = number;
         setResultNumber(dataNumber);
     };
+
+    const getCountryfromMap = (country: string) => {
+        setCountry(country);
+    };
+
     return (
         <div className="w-screen h-screen overflow-y-scroll">
             <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl p-4 font-bold">
@@ -58,7 +64,9 @@ function App() {
                                     onChange={(e) => setCountry(e.target.value)}
                                 />
                             </div>
-
+                            <div className="flex justify-center m-4">
+                                <MapInput fetch={getCountryfromMap} />
+                            </div>
                             <div className="flex justify-center m-4">
                                 <select
                                     value={number}
