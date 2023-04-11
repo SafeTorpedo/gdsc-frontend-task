@@ -13,15 +13,17 @@ function App() {
         e.preventDefault();
         const data = country;
         setResult(data);
+        setCountry("");
     };
     const handleSubmitReverse = (e: React.FormEvent) => {
         e.preventDefault();
         const data = artist;
         setResult(data);
+        setArtist("");
     };
     return (
-        <div className="w-screen h-screen bg-gray-600 overflow-y-scroll">
-            <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl p-4">
+        <div className="w-screen h-screen overflow-y-scroll">
+            <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl p-4 font-bold">
                 GDSC Frontend Task 1
             </h1>
             <div>
@@ -43,7 +45,7 @@ function App() {
                         <form onSubmit={handleSubmit}>
                             <div className="flex justify-center m-4">
                                 <input
-                                    className="w-3/4 p-4 rounded-3xl bg-gray-300"
+                                    className="w-3/4 p-4 rounded-3xl bg-gray-100"
                                     type="text"
                                     placeholder="Enter country name"
                                     value={country}
@@ -52,7 +54,7 @@ function App() {
                             </div>
                             <div className="flex justify-center m-4">
                                 <button
-                                    className="w-1/4  p-4 rounded-3xl bg-gray-400"
+                                    className="w-1/4  p-4 rounded-3xl bg-[#000031] text-white"
                                     type="submit"
                                 >
                                     Submit
@@ -65,7 +67,7 @@ function App() {
                         <form onSubmit={handleSubmitReverse}>
                             <div className="flex justify-center m-4">
                                 <input
-                                    className="w-3/4 p-4 rounded-3xl bg-gray-300"
+                                    className="w-3/4 p-4 rounded-3xl bg-gray-100"
                                     type="text"
                                     placeholder="Enter artist name"
                                     value={artist}
@@ -74,7 +76,7 @@ function App() {
                             </div>
                             <div className="flex justify-center m-4">
                                 <button
-                                    className="w-1/4  p-4 rounded-3xl bg-gray-400"
+                                    className="w-1/4  p-4 rounded-3xl bg-[#000031] text-white"
                                     type="submit"
                                 >
                                     Submit

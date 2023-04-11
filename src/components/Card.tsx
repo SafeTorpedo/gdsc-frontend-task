@@ -19,9 +19,13 @@ const Card = ({
     }, [name]);
 
     return (
-        <div className="bg-gray-300 rounded-3xl p-4">
+        <div className="bg-[#000031] text-white rounded-3xl p-4">
             <div className="flex justify-center">
-                <img src={image} alt={name} className="w-[174px] h-[174px]" />
+                <img
+                    src={image}
+                    alt={name}
+                    className="w-[174px] h-[174px] rounded-xl border-2 border-white"
+                />
             </div>
             <div className="flex justify-center">
                 <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl p-4">
