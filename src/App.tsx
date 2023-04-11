@@ -9,17 +9,21 @@ function App() {
     const [result, setResult] = useState("");
     const [value, setValue] = useState("1");
     const [artist, setArtist] = useState("");
+    const [number, setNumber] = useState(5);
+    const [resultNumber, setResultNumber] = useState(5);
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const data = country;
         setResult(data);
-        setCountry("");
+        const dataNumber = number;
+        setResultNumber(dataNumber);
     };
     const handleSubmitReverse = (e: React.FormEvent) => {
         e.preventDefault();
         const data = artist;
         setResult(data);
-        setArtist("");
+        const dataNumber = number;
+        setResultNumber(dataNumber);
     };
     return (
         <div className="w-screen h-screen overflow-y-scroll">
@@ -52,6 +56,22 @@ function App() {
                                     onChange={(e) => setCountry(e.target.value)}
                                 />
                             </div>
+
+                            <div className="flex justify-center m-4">
+                                <select
+                                    value={number}
+                                    className=" w-1/6 p-4 rounded-2xl bg-gray-100"
+                                    onChange={(e) =>
+                                        setNumber(Number(e.target.value))
+                                    }
+                                >
+                                    {[4, 5, 6, 7, 8, 9, 10, 11, 12].map(
+                                        (item) => (
+                                            <option value={item}>{item}</option>
+                                        )
+                                    )}
+                                </select>
+                            </div>
                             <div className="flex justify-center m-4">
                                 <button
                                     className="w-1/4  p-4 rounded-3xl bg-[#000031] text-white"
@@ -61,7 +81,9 @@ function App() {
                                 </button>
                             </div>
                         </form>
-                        {result == "" ? null : <Result search={result} />}
+                        {result == "" ? null : (
+                            <Result search={result} max={resultNumber} />
+                        )}
                     </TabPanel>
                     <TabPanel value="2">
                         <form onSubmit={handleSubmitReverse}>
@@ -75,6 +97,21 @@ function App() {
                                 />
                             </div>
                             <div className="flex justify-center m-4">
+                                <select
+                                    value={number}
+                                    className=" w-1/6 p-4 rounded-2xl bg-gray-100"
+                                    onChange={(e) =>
+                                        setNumber(Number(e.target.value))
+                                    }
+                                >
+                                    {[4, 5, 6, 7, 8, 9, 10, 11, 12].map(
+                                        (item) => (
+                                            <option value={item}>{item}</option>
+                                        )
+                                    )}
+                                </select>
+                            </div>
+                            <div className="flex justify-center m-4">
                                 <button
                                     className="w-1/4  p-4 rounded-3xl bg-[#000031] text-white"
                                     type="submit"
@@ -83,7 +120,9 @@ function App() {
                                 </button>
                             </div>
                         </form>
-                        {result == "" ? null : <Reverse search={result} />}
+                        {result == "" ? null : (
+                            <Reverse search={result} max={resultNumber} />
+                        )}
                     </TabPanel>
                 </TabContext>
             </div>

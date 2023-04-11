@@ -2,15 +2,20 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import { getTracks } from "../api";
 
-const Reverse = ({ search }: { search: string }) => {
+interface ReverseProps {
+    search: string;
+    max: number;
+}
+
+const Reverse = ({ search, max }: ReverseProps) => {
     const [tracks, setTracks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        getTracks(search).then((res) => {
+        getTracks(search, max).then((res) => {
             setTracks(res);
             setIsLoading(false);
         });
-    }, [search]);
+    }, [search, max]);
     if (isLoading) {
         return <div className="flex justify-center m-4">Loading...</div>;
     }
@@ -19,7 +24,7 @@ const Reverse = ({ search }: { search: string }) => {
             <div>
                 <div className="flex justify-center m-4">
                     <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl p-4">
-                        Top 5 tracks by {search}
+                        Top {max} tracks by {search}
                     </h1>
                 </div>
                 <div className="flex justify-center m-4">

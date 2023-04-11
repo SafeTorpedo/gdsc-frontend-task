@@ -1,15 +1,13 @@
 import { memo, useEffect, useState } from "react";
 import { searchImages } from "../api";
 
-const Card = ({
-    name,
-    listeners,
-    link,
-}: {
+interface CardProps {
     name: string;
     listeners: string;
     link?: string;
-}) => {
+}
+
+const Card = ({ name, listeners, link }: CardProps) => {
     const [image, setImage] = useState("");
 
     useEffect(() => {

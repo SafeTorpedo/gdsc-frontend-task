@@ -15,14 +15,14 @@ const searchImages = async (term: string) => {
     return response.data.results[0].urls.regular;
 };
 
-const getData = async (search: string) => {
+const getData = async (search: string, max: number) => {
     const artists = await axios.get("https://ws.audioscrobbler.com/2.0/", {
         params: {
             method: "geo.gettopartists",
             country: search,
             api_key: import.meta.env.VITE_API_KEY,
             format: "json",
-            limit: 5,
+            limit: max,
         },
     });
     const tracks = await axios.get("https://ws.audioscrobbler.com/2.0/", {
@@ -31,7 +31,7 @@ const getData = async (search: string) => {
             country: search,
             api_key: import.meta.env.VITE_API_KEY,
             format: "json",
-            limit: 5,
+            limit: max,
         },
     });
     return {
@@ -40,14 +40,14 @@ const getData = async (search: string) => {
     };
 };
 
-const getTracks = async (search: string) => {
+const getTracks = async (search: string, max: Number) => {
     const tracks = await axios.get("https://ws.audioscrobbler.com/2.0/", {
         params: {
             method: "artist.gettoptracks",
             artist: search,
             api_key: import.meta.env.VITE_API_KEY,
             format: "json",
-            limit: 5,
+            limit: max,
         },
     });
     return tracks.data.toptracks.track;

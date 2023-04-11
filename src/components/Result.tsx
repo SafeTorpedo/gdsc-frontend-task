@@ -2,18 +2,23 @@ import { memo, useEffect, useState } from "react";
 import Card from "./Card";
 import { getData } from "../api";
 
-const Result = ({ search }: { search: string }) => {
+interface ResultProps {
+    search: string;
+    max: number;
+}
+
+const Result = ({ search, max }: ResultProps) => {
     const [artists, setArtists] = useState([]);
     const [tracks, setTracks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getData(search).then((res) => {
+        getData(search, max).then((res) => {
             setArtists(res.artists);
             setTracks(res.tracks);
             setIsLoading(false);
         });
-    }, [search]);
+    }, [search, max]);
 
     if (isLoading) {
         return <div className="flex justify-center m-4">Loading...</div>;
@@ -24,7 +29,7 @@ const Result = ({ search }: { search: string }) => {
             <div>
                 <div className="flex justify-center m-4">
                     <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl p-4">
-                        Top 5 Artists in {search}
+                        Top {max} Artists in {search}
                     </h1>
                 </div>
                 <div className="flex justify-center m-4">
@@ -42,7 +47,7 @@ const Result = ({ search }: { search: string }) => {
             <div>
                 <div className="flex justify-center m-4">
                     <h1 className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl p-4">
-                        Top 5 Tracks in {search}
+                        Top {max} Tracks in {search}
                     </h1>
                 </div>
                 <div className="flex justify-center m-4">
